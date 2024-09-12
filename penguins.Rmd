@@ -1,0 +1,21 @@
+---
+title: "Penguins"
+author: "Eli"
+date: "2024-09-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+These data include observations of three species of penguins (Adelie, Gentoo, and Chinstrap) at the Palmer Station LTER in Antarctica. These data were collected and published by Dr. Kristen Gorman and the Palmer Station.
+
+![](https://www.gabemednick.com/post/penguin/featured.png)
+
+## Single trait distribution
+
+## Relationship between multiple traits
+
+## Sexual dimorphism
