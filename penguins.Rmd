@@ -50,7 +50,7 @@ ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
 
 ## Sexual dimorphism
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 penguins_filtered <- penguins %>%
   filter(sex != "N/A")
 
@@ -92,4 +92,26 @@ ggplot(penguins_filtered, aes(x=species, y=body_mass_g, fill=sex))+
 
 
 ```
+```{r echo=FALSE, warning=FALSE}
+penguins %>%
+  ggplot(mapping = aes(x = bill_length_mm, y=bill_depth_mm, color=sex)) +
+  geom_point(size=1) +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Sex")+
+  theme_minimal()+
+  facet_wrap(~species)
+```
 
+```{r echo=FALSE, warning=FALSE}
+penguins %>%
+  ggplot(mapping = aes(x = body_mass_g, y=flipper_length_mm, color=sex)) +
+  geom_point(size=1) +
+  labs(
+    x = "Body mass (g)",
+    y = "Flipper length (mm)",
+    color = "Sex")+
+  theme_minimal()+
+  facet_wrap(~species)
+```
