@@ -22,7 +22,7 @@ library(ggplot2)
 
 ## Single trait distribution
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-ggplot(penguins) +  
+ggplot(data = penguins) +  
   geom_histogram(position = "identity", mapping = aes(fill = species, x = bill_length_mm), alpha = 0.5)+
   labs(
     caption = "Bill length distribution by species.",
@@ -35,4 +35,61 @@ ggplot(penguins) +
 
 ## Relationship between multiple traits
 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = lm)+
+  labs(
+    caption = "Flipper length by body mass of three penguin species",
+    x = "Body mass (g)",
+    y = "Flipper Length (mm)",
+    color = "Species")+
+  theme_minimal()
+
+```
+
 ## Sexual dimorphism
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+penguins_filtered <- penguins %>%
+  filter(sex != "N/A")
+
+ggplot(penguins_filtered, aes(x=species, y=bill_length_mm, fill=sex))+
+  geom_bar(stat="summary", fun="mean", position="dodge")+
+  geom_errorbar(stat="summary", fun.data="mean_se", position="dodge")+
+  labs(
+    x = "Species",
+    y = "Bill Length (mm)",
+    fill = "Sex when known")+
+  theme_minimal()
+
+ggplot(penguins_filtered, aes(x=species, y=bill_depth_mm, fill=sex))+
+  geom_bar(stat="summary", fun="mean", position="dodge")+
+  geom_errorbar(stat="summary", fun.data="mean_se", position="dodge")+
+  labs(
+    x = "Species",
+    y = "Bill Length (mm)",
+    fill = "Sex when known")+
+  theme_minimal()
+
+ggplot(penguins_filtered, aes(x=species, y=flipper_length_mm, fill=sex))+
+  geom_bar(stat="summary", fun="mean", position="dodge")+
+  geom_errorbar(stat="summary", fun.data="mean_se", position="dodge")+
+  labs(
+    x = "Species",
+    y = "Bill Length (mm)",
+    fill = "Sex when known")+
+  theme_minimal()
+
+ggplot(penguins_filtered, aes(x=species, y=body_mass_g, fill=sex))+
+  geom_bar(stat="summary", fun="mean", position="dodge")+
+  geom_errorbar(stat="summary", fun.data="mean_se", position="dodge")+
+  labs(
+    x = "Species",
+    y = "Bill Length (mm)",
+    fill = "Sex when known")+
+  theme_minimal()
+
+
+```
+
